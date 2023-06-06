@@ -1,0 +1,847 @@
+[2021-02-20 10:26:05][163] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-20 10:26:09][163] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-20 17:04:44][164] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-20 17:04:48][164] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-20 17:13:46][165] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-20 17:13:50][165] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-20 17:14:26][166] Processing: App\Jobs\ComplaintResolved
+[2021-02-20 17:14:29][166] Processed:  App\Jobs\ComplaintResolved
+[2021-02-22 09:19:47][167] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-22 09:19:53][167] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-22 09:20:26][168] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-22 09:20:29][168] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-22 09:36:51][169] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-22 09:36:55][169] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-22 09:43:46][170] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-22 09:43:50][170] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-22 10:43:53][171] Processing: App\Jobs\ComplaintResolved
+[2021-02-22 10:43:57][171] Processed:  App\Jobs\ComplaintResolved
+[2021-02-22 11:07:18][172] Processing: App\Jobs\ComplaintTransferred
+[2021-02-22 11:07:23][172] Processed:  App\Jobs\ComplaintTransferred
+[2021-02-22 11:18:23][173] Processing: App\Jobs\ComplaintResolved
+[2021-02-22 11:18:27][173] Processed:  App\Jobs\ComplaintResolved
+[2021-02-22 13:59:09][174] Processing: App\Jobs\InquiryTransferred
+[2021-02-22 13:59:14][174] Processed:  App\Jobs\InquiryTransferred
+[2021-02-22 15:13:59][175] Processing: App\Jobs\InquiryResolved
+[2021-02-22 15:14:02][175] Processed:  App\Jobs\InquiryResolved
+[2021-02-22 15:15:23][176] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-02-22 15:15:27][176] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-02-22 15:16:03][177] Processing: App\Jobs\InquiryTransferred
+[2021-02-22 15:16:07][177] Processed:  App\Jobs\InquiryTransferred
+[2021-02-22 15:29:23][178] Processing: App\Jobs\InquiryResolved
+[2021-02-22 15:29:26][178] Processed:  App\Jobs\InquiryResolved
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   InvalidArgumentException 
+
+  No connector for [].
+
+  at vendor/laravel/framework/src/Illuminate/Queue/QueueManager.php:172
+    168|      */
+    169|     protected function getConnector($driver)
+    170|     {
+    171|         if (! isset($this->connectors[$driver])) {
+  > 172|             throw new InvalidArgumentException("No connector for [$driver].");
+    173|         }
+    174| 
+    175|         return call_user_func($this->connectors[$driver]);
+    176|     }
+
+      [2m+18 vendor frames [22m
+  19  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   Symfony\Component\Process\Exception\ProcessSignaledException 
+
+  The process has been signaled with signal "1".
+
+  at vendor/symfony/process/Process.php:436
+    432|             usleep(1000);
+    433|         }
+    434| 
+    435|         if ($this->processInformation['signaled'] && $this->processInformation['termsig'] !== $this->latestSignal) {
+  > 436|             throw new ProcessSignaledException($this);
+    437|         }
+    438| 
+    439|         return $this->exitcode;
+    440|     }
+
+      [2m+17 vendor frames [22m
+  18  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+[2021-02-24 09:55:42][179] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-24 09:55:48][179] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-24 09:55:48][180] Processing: App\Jobs\ComplaintResolved
+[2021-02-24 09:55:51][180] Processed:  App\Jobs\ComplaintResolved
+[2021-02-25 10:17:36][181] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-25 10:17:40][181] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-25 10:21:40][182] Processing: App\Jobs\ComplaintTransferred
+[2021-02-25 10:21:44][182] Processed:  App\Jobs\ComplaintTransferred
+[2021-02-25 10:32:30][183] Processing: App\Jobs\ComplaintResolved
+[2021-02-25 10:32:34][183] Processed:  App\Jobs\ComplaintResolved
+[2021-02-25 11:51:55][184] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-02-25 11:51:59][184] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-02-25 13:22:27][185] Processing: App\Jobs\InquiryResolved
+[2021-02-25 13:22:32][185] Processed:  App\Jobs\InquiryResolved
+[2021-02-25 14:00:57][186] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-02-25 14:01:02][186] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-02-25 14:01:56][187] Processing: App\Jobs\InquiryTransferred
+[2021-02-25 14:02:00][187] Processed:  App\Jobs\InquiryTransferred
+[2021-02-27 11:57:56][188] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-27 11:58:00][188] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-27 12:16:58][189] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-27 12:17:02][189] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-27 13:26:47][190] Processing: App\Jobs\ComplaintTransferred
+[2021-02-27 13:26:51][190] Processed:  App\Jobs\ComplaintTransferred
+[2021-02-27 13:28:28][191] Processing: App\Jobs\ComplaintResolved
+[2021-02-27 13:28:32][191] Processed:  App\Jobs\ComplaintResolved
+[2021-02-27 13:35:05][192] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-02-27 13:35:09][192] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-02-27 13:41:30][193] Processing: App\Jobs\NewComplaintNotifications
+[2021-02-27 13:41:34][193] Processed:  App\Jobs\NewComplaintNotifications
+[2021-02-27 14:59:40][194] Processing: App\Jobs\InquiryResolved
+[2021-02-27 14:59:45][194] Processed:  App\Jobs\InquiryResolved
+[2021-02-27 16:43:13][195] Processing: App\Jobs\InquiryTransferred
+[2021-02-27 16:43:18][195] Processed:  App\Jobs\InquiryTransferred
+[2021-02-27 16:43:42][196] Processing: App\Jobs\InquiryResolved
+[2021-02-27 16:43:46][196] Processed:  App\Jobs\InquiryResolved
+[2021-03-01 10:01:20][197] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 10:01:25][197] Processed:  App\Jobs\NewComplaintNotifications
+[2021-03-01 10:02:43][198] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-03-01 10:02:47][198] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-03-01 10:03:47][199] Processing: App\Jobs\InquiryTransferred
+[2021-03-01 10:03:51][199] Processed:  App\Jobs\InquiryTransferred
+[2021-03-01 11:35:10][200] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 11:35:14][200] Processed:  App\Jobs\NewComplaintNotifications
+[2021-03-01 12:17:01][201] Processing: App\Jobs\ComplaintResolved
+[2021-03-01 12:17:05][201] Processed:  App\Jobs\ComplaintResolved
+[2021-03-01 13:54:36][202] Processing: App\Jobs\ComplaintTransferred
+[2021-03-01 13:54:40][202] Processed:  App\Jobs\ComplaintTransferred
+[2021-03-01 14:06:31][203] Processing: App\Jobs\ComplaintResolved
+[2021-03-01 14:06:35][203] Processed:  App\Jobs\ComplaintResolved
+[2021-03-01 16:36:14][204] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 16:36:18][204] Processed:  App\Jobs\NewComplaintNotifications
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+
+                                         
+  The "--daemon" option does not exist.  
+                                         
+
+[2021-03-01 16:48:08][205] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 16:48:10][206] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 16:48:12][207] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 16:48:14][207] Failed:     App\Jobs\NewComplaintNotifications
+[2021-03-01 17:13:39][208] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 17:13:40][209] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 17:13:41][210] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 17:13:42][210] Failed:     App\Jobs\NewComplaintNotifications
+[2021-03-01 17:21:58][211] Processing: App\Jobs\NewComplaintNotifications
+[2021-03-01 17:22:01][211] Processed:  App\Jobs\NewComplaintNotifications
+[2021-04-09 12:47:39][212] Processing: App\Jobs\NewComplaintNotifications
+[2021-04-09 12:47:42][212] Processed:  App\Jobs\NewComplaintNotifications
+[2021-04-09 12:51:30][213] Processing: App\Jobs\ComplaintResolved
+[2021-04-09 12:51:32][213] Processed:  App\Jobs\ComplaintResolved
+[2021-05-04 16:28:55][214] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-05-04 16:28:57][214] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-05-05 11:47:24][215] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-05-05 11:47:25][215] Processed:  App\Jobs\NewInquiryJobNotifications
+[2021-05-05 21:04:54][216] Processing: App\Jobs\NewInquiryJobNotifications
+[2021-05-05 21:04:57][216] Processed:  App\Jobs\NewInquiryJobNotifications
