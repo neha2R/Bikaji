@@ -162,6 +162,7 @@
 
                                             <li role="presentation"><a role="menuitem" href="/customerinquiryform">I want to inquire about business opportunities</a></li>
                                             <li role="presentation"><a role="menuitem" href="/trackcomplaint">I want to track progress on my complaint</a></li>
+                                            <li role="presentation"><a role="menuitem" href="/feedback">Customer feedback</a></li>
 
                                             <!-- <li role="presentation"><a role="menuitem" href="https://customercare.bikajionline.com/trackcomplaint">I want to track progress on my complaint</a></li> -->
                                         </ul>

@@ -33,6 +33,8 @@ use App\User;
 use App\Models\ComplaintAttachment;
 
 use App\Models\Category;
+use App\Models\Product;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -50,10 +52,11 @@ class DashboardController extends Controller
         try {
             $complaintsource = ComplaintSource::all();
             $inquirysource = InquiryType::all();
-            $deparments = Department::has('users')->get();
+            $deparments = Department::has('users')->orderBy('id', 'desc')->get();
             $enquirytype = InquiryType::all();
           //  $complaints = Complaint::where('createdby', auth()->user()->id);
             $category = Category::all();
+            $product = Product::all();
             if (request()->has('fromdate') && request()->has('todate')) {
                 $fromDate = Carbon::parse(request()->fromdate)->format('Y-m-d');
                 $toDate = Carbon::parse(request()->todate)->format('Y-m-d');
@@ -151,14 +154,108 @@ class DashboardController extends Controller
          return Excel::download(new OtherExport($data), 'Complaints.xlsx');
 
             }
-            return view('frontoffice.dashboard', compact('enquirytype', 'complaintsource', 'deparments', 'complaints', 'inquirysource','category'));
+            return view('frontoffice.dashboard', compact('enquirytype', 'complaintsource', 'deparments', 'complaints', 'inquirysource','category','product'));
         } catch (\Throwable $th) {
             $this->customerr($th);
         }
     }
-
+    public function get_category(Request $req)
+    {
+        return json_encode(Category::where('productid',$req->id)->where('is_active',1)->get());
+    }
     public function createcomplaint(Request $request)
     {
+        
+        if ($request->hasfile('images')) {
+dd($request->file('images'));
+        }
+        if ($request->hasfile('media_name')) {
+
+
+
+            //    $media->video_link = isset($request->video_link) ? $request->video_link : '';
+               // $media->save();
+
+                foreach ($request->file('media_name') as $key => $file) {
+                   //echo number_format(filesize('./storage/documents/'.$document->filename) / 1048576, 2) MB
+                 //  $filePath = $file->getPathname();
+                   //dd($filePath);
+                  // $filePath = 'path_to_your_file.ext';
+               //    $newSize = 1024; // Desired file size in bytes
+                   
+                //   $fileHandle = fopen($filePath, 'wb');
+                   
+                 //  if ($fileHandle) {
+                       // Seek to the desired size
+                  //     fseek($fileHandle, $newSize - 1, SEEK_SET);
+                       
+                       // Write a null byte at the last position to expand the file
+                    //   fwrite($fileHandle, "\0", 1);
+                       
+                       // Close the file handle
+                    //   fclose($fileHandle);
+                   
+                  //     echo "File size updated successfully to {$newSize} bytes.";
+                  // } else {
+                     //  echo "Failed to open the file.";
+                  // }
+                 //  dd( $file->getSize());
+
+                //    if ($bytes >= 1073741824) {
+                //     $file_size=   number_format($bytes / 1073741824, 2) . ' GB';
+                // } elseif ($bytes >= 1048576) {
+                //     $file_size= number_format($bytes / 1048576, 2) . ' MB';
+                // } elseif ($bytes >= 1024) {
+                //     $file_size= number_format($bytes / 1024, 2) . ' KB';
+                // } elseif ($bytes > 1) {
+                //     $file_size = $bytes . ' bytes';
+                // } elseif ($bytes == 1) {
+                //     $file_size=   '1 byte';
+                // } else {
+                //     $file_size =  '0 bytes';
+                // }
+              //  $file= file_put_contents($file, $file_size);
+               // $file=file_get_contents($file);
+//dd(realpath($file));
+               list($width, $height) = getimagesize($file);
+
+               //saving the image into memory (for manipulation with GD Library)
+               $myImage = imagecreatefromjpeg(realpath($file));
+               
+               // calculating the part of the image to use for thumbnail
+               if ($width > $height) {
+                 $y = 0;
+                 $x = ($width - $height) / 2;
+                 $smallestSide = $height;
+               } else {
+                 $x = 0;
+                 $y = ($height - $width) / 2;
+                 $smallestSide = $width;
+               }
+               
+               // copying the part into thumbnail
+               $thumbSize = 1500;
+               $thumb = imagecreatetruecolor($thumbSize, $thumbSize);
+               imagecopyresampled($thumb, $myImage, 0, 0, $x, $y, $thumbSize, $thumbSize, $smallestSide, $smallestSide);
+           ////  dd(imagecopyresampled($thumb, $myImage, 0, 0, $x, $y, $thumbSize, $thumbSize, $smallestSide, $smallestSide)
+            ////);
+
+               //final output
+               header('Content-type: image/jpeg');
+
+               $initfilename = uniqid() . ".png";
+ 		$imagename= public_path("/storage/complaintimage/" . $initfilename);
+         imagejpeg($thumb,$imagename);
+            //   $foldername = 'complaintimage';
+            //   $batchimage = $myImage->store($foldername, 'public');
+        
+              // $name = imagejpeg($thumb)->store('complaintimage', 'public');
+              dd( imagejpeg($thumb,$imagename));
+             imagejpeg($thumb);
+
+
+                }
+            }
         try {
             $customMessages = [
                 'customername.required' => 'Name is required',
@@ -195,8 +292,10 @@ class DashboardController extends Controller
             $data['customer_invoice_no'] = $request->customer_invoice_no;
             $data['purchase_date'] = $request->purchase_date;
             $data['delivery_date'] = $request->delivery_date;
-          ////  $data['product_category'] = $request->product_category;
-            $data['product_name'] = $request->product_name;
+          $prod=Product::select('name')->where('id',$request->product_name)->orderBy('id', 'desc')->first();
+              // dd($prod->name);
+            $data['product_name'] = $prod->name;
+
             $data['batch_number'] = $request->batch_number;
             $data['sku'] = $request->sku;
             $data['mfg'] = $request->mfg;
@@ -205,6 +304,8 @@ class DashboardController extends Controller
 
             $data['complaint_type'] = $request->complaint_type;
              $data['product_categoryid'] = $request->pc;
+             $data['product_nameid'] = $request->product_name;
+
             $data['image'] = '';
            
           if ($request->has('batchfile')) {
@@ -221,7 +322,54 @@ class DashboardController extends Controller
                // $media->save();
 
                 foreach ($request->file('media_name') as $key => $file) {
+                  //  dd($file->getSize());
+                    //$file = is_array($file) ? $file[0] : $file;
+                    // $filePath = $file->getPathname();
 
+                    // $newFileSize = 2048; // Desired file size in bytes
+
+                    // // Open the file in binary mode
+                    // $fileHandle = fopen($filePath, 'r+b');
+                    
+                    // if ($fileHandle) {
+                    //     // Set the file pointer to the end of the file
+                    //     fseek($fileHandle, 0, SEEK_END);
+                    
+                    //     // Get the current file size
+                    //     $currentFileSize = ftell($fileHandle);
+                    //     dd($currentFileSize);
+                    //     // Calculate the size difference
+                    //     $sizeDifference = $newFileSize - $currentFileSize;
+                    
+                    //     if ($sizeDifference > 0) {
+                    //         // Increase the file size by writing null bytes to the end of the file
+                    //         fwrite($fileHandle, str_repeat("\0", $sizeDifference));
+                    //     } elseif ($sizeDifference < 0) {
+                    //         // Truncate the file to the desired size
+                    //         ftruncate($fileHandle, $newFileSize);
+                    //     }
+                    
+                    //     // Close the file handle
+                    //     fclose($fileHandle);
+                    // } 
+                   //// dd($file->getSize());
+                ////  dd($_FILES['media_name']['size'][$key]);
+              ////  $fileSizeBytes = $file['size'];
+//dd($fileSizeBytes);
+                // Convert to kilobytes
+            //    $fileSizeKB = round($file->getSize() / 1024);
+              
+             //   $_FILES['media_name']['size'][$key]= $fileSizeKB;
+              ////  $file->getSize() =$fileSizeKB;
+           //   dd( $_FILES['media_name']['size'][$key]);
+         ////       $size = $file->getSize();
+//dd($size); dd($file->getSize());
+           ///      $this->convertUploadedFileToHumanReadable($size);
+          // $file=$_FILES['media_name']['name'][$key];
+          //    dd($file);
+
+                  //  $imagesize= $this->convert_filesize(filesize($file));
+                   //// dd($imagesize);
                     $type = '0';
                     // FeedMediaUploadJob::dispatchNow($file,$media->id,$type);
                     $name = $file->store('complaintimage', 'public');
@@ -291,7 +439,29 @@ class DashboardController extends Controller
             $this->customerr($th);
         }
     }
+    public function convert_filesize($bytes){
+        $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+        $power = $bytes > 0 ? floor(log($bytes, 1024)) : 0;
+       // dd($power);
+        return number_format($bytes / pow(1024, $power), 2, '.', ',') . ' ' . $units[1];
+    
 
+       // $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+       // $factor = floor((strlen($bytes) - 1) / 3);
+       // return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    }
+    public function convertUploadedFileToHumanReadable($size, $precision = 2)
+    {
+        if ( $size > 0 ) {
+            $size = (int) $size;
+            $base = log($size) / log(1024);
+            //dd($base);
+            $suffixes = array(' bytes', ' KB', ' MB', ' GB', ' TB');
+            return round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor(1)];
+        }
+
+        return $size;
+    }
     public function createinquiry(Request $request)
     {
         try {
@@ -804,12 +974,14 @@ $this->sendsms($compData->mobile, 'Dear ' . $compData->customername . ' Your com
             $inquirysource = InquiryType::all();
             $deparments = Department::has('users')->get();
             $enquirytype = InquiryType::all();
-             $category = Category::all();
+             $product = Product::all();
+             $category = Category::where('productid', $comp->product_nameid)->get();
+
              $complaintattachment = ComplaintAttachment::where('complaint_id', $id)->where('media_type', '0')->orderByDesc('id')->get();
           
            $complaintattachmentvideo = ComplaintAttachment::where('complaint_id', $id)->where('media_type', '1')->orderByDesc('id')->get();
 
-            return view('frontoffice.editcomplaint', ['inquirysource' => $inquirysource, 'deparments' => $deparments, 'enquirytype' => $enquirytype, 'complaintsource' => $complaintsource, 'category' => $category, 'comp' => $comp,'complaintattachment' => $complaintattachment, 'complaintattachmentvideo' => $complaintattachmentvideo]);
+            return view('frontoffice.editcomplaint', ['inquirysource' => $inquirysource, 'deparments' => $deparments, 'enquirytype' => $enquirytype, 'complaintsource' => $complaintsource, 'category' => $category, 'comp' => $comp,'complaintattachment' => $complaintattachment, 'complaintattachmentvideo' => $complaintattachmentvideo, 'product' => $product]);
         } catch (\Throwable $th) {
             //throw $th;
         }
@@ -836,6 +1008,7 @@ $this->sendsms($compData->mobile, 'Dear ' . $compData->customername . ' Your com
                 return redirect()->back()->withErrors($validator);
             }
             $data = [];
+
             $data['uuid'] = compaintnamehelper();
             $data['customername'] = $request->customername;
             $data['details'] = $request->details;
@@ -853,7 +1026,12 @@ $this->sendsms($compData->mobile, 'Dear ' . $compData->customername . ' Your com
             $data['purchase_date'] = $request->purchase_date;
             $data['delivery_date'] = $request->delivery_date;
             $data['product_category'] = $request->product_category;
-            $data['product_name'] = $request->product_name;
+
+            $prod=Product::select('name')->where('id',$request->product_name)->first();
+           // dd($prod->name);
+          $data['product_name'] = $prod->name;
+        //  dd($request->pc);
+
             $data['batch_number'] = $request->batch_number;
             $data['sku'] = $request->sku;
             $data['mfg'] = $request->mfg;
@@ -861,7 +1039,10 @@ $this->sendsms($compData->mobile, 'Dear ' . $compData->customername . ' Your com
             $data['risk_category'] =$request->inlineRadioOptions;
 
             $data['complaint_type'] = $request->complaint_type;
+
             $data['product_categoryid'] = $request->pc;
+            $data['product_nameid'] = $request->product_name;
+
 $data['image'] = '';
           
              if ($request->has('batchfile')) {

@@ -6,12 +6,33 @@
     .readmorediv {
         overflow: hidden;
     }
+    .feather {
+    font-family: 'feather' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 22px;
+    -moz-osx-font-smoothing: grayscale;
+}
+table.table-bordered.dataTable tbody th {
+    white-space: normal !important;
+    /* display: inline-block; */
+    max-width: 132px;
+}
 </style>
 <div class="row">
     <div class="col-sm-12">
         <!-- Zero config.table start -->
         <div class="card">
             <div class="card-header">
+            <div style="float:right">
+            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a> </div>
                 <h5>Inquiry</h5>
             </div>
             <div class="card-block">

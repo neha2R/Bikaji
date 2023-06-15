@@ -3,8 +3,56 @@
     @if (session()->has('status'))
         <input type="hidden" id="inquirytab" value="{{ session()->get('status') }}">
     @endif
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{{ URL::asset('files/assets/js/frontoffice.js') }}"></script>
+    
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+      <style>
+        #smalll {
 
+            white-space: normal;
+        }
+        .feather {
+    font-family: 'feather' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 22px;
+    -moz-osx-font-smoothing: grayscale;
+}
+        .icon-pencil:before {
+            content: "\e90e";
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
         <div class="text-right" style="margin-bottom:10px;"><button  type="button" class="btn btn-primary " data-bs-toggle="collapse" data-bs-target="#demo">Register a complaint/inquiry</button></div>
 
     <div class="row collapse" id="demo">
@@ -102,7 +150,8 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Upload File</label>
                                         <div class="col-sm-10">
-                                    <input type="file" id="files_1" style="display: block;" name="media_name[]" accept="image/*" multiple />
+                                    <input type="file" id="media_name" style="display: block;" name="media_name[]" accept="image/*" multiple />
+                                    <div id="previewContainer"></div>
 
                                         </div>
                                     </div>
@@ -204,8 +253,15 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Product Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="product_name"
-                                                placeholder="Product Name" maxlength="100">
+
+                                        <select required id="product_name"  onchange="getcategory(this.value)" name="product_name" data-placeholder="Select Product Name" class="form-control select">
+                                        <option value="">Select Product Name</option>
+                                        @foreach ($product as $pitem)
+                                            <option value="{{$pitem->id}}">{{ucwords($pitem->name ?? 'N/A')}}</option>
+                                            @endforeach
+                                </select>
+                                            <!--<input type="text" class="form-control" name="product_name"
+                                                placeholder="Product Name" maxlength="100">-->
                                         </div>
                                     </div>
 
@@ -220,7 +276,7 @@
                                  <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Product Category</label>
                                     <div class="col-sm-10">
-                                        <select name="pc" class="form-control">
+                                        <select id="pc" name="pc" class="form-control">
                                             @foreach ($category as $item)
                                             <option value="{{$item->id}}">{{ucwords($item->name ?? 'N/A')}}</option>
                                             @endforeach
@@ -310,8 +366,9 @@
                                         </div>
                                     </div>
 
+                                    <input type="submit" value="Create Complaint">
 
-                                    <button class="btn btn-primary">Create Complaint</button>
+                                    <!-- <button class="btn btn-primary">Create Complaint</button> -->
 
                                 </form>
                             </div>
@@ -403,7 +460,12 @@
     <div class="row" >
         <div class="col-md-12">
             <div class="card" id="section1">
+                
                 <div class="card-header">
+                <div style="float:right">
+            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a> </div>
                     <h3>Complaint Listing </h3>
                     <h5>(Kindly Reset the Form first after each Filter option before moving to another filter)</h5>
                     {{-- <span>DataTables has most features enabled by default, so all you need to do to use it with your own ables is to call the construction function: $().DataTable();.</span> --}}
@@ -494,7 +556,7 @@
 
 
                 </div>
-                
+               
                 <div class="card-block">
                     <div class="dt-responsive table-responsive">
                         <table id="simpletable1" class="table table-striped table-bordered nowrap">
@@ -612,15 +674,26 @@
 
 
                                         </td>
-                                        <td>
+
+                                        <td> <a href="editcomplaint/{{ $item->id }}"><i
+                                                        class="fa fa-pencil-square fa-2x"></i></a>
+                                                <a class="complaintresolvebtn" data-toggle="modal"
+                                                    data-target="#view-data{{ $key + 1 }}">
+                                                    <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+
+                                                </a>
+                                            </td>
+                                     <!---   <td>
                                             <a href="editcomplaint/{{ $item->id }}"
-                                                class="btn btn-primary waves-effect ">Edit</a>
-                                            <button type="button"
-                                                class="btn btn-primary waves-effect complaintresolvebtn"
+                                                class="btn btn-primary waves-effect "><i
+                                                        class="fa fa-pencil-square fa-2x"></i></a>
+                                            <a
+                                                class="complaintresolvebtn"
                                                 data-toggle="modal" data-target="#view-data{{ $key + 1 }}">
-                                                View
-                                            </button>
-                                        </td>
+                                                <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+
+                                            </a>
+                                        </td> -->
                                         
                                 @endif
                                 
@@ -880,8 +953,108 @@
 @endsection
 
 @section('js')
-    <script>
+<script>
+ ///   alert("call");
+    function getcategory(val)
+ {
+   // console.log("call");
+   // alert(val);
+    $.ajax({
+            type: 'GET',
+            url: "{{url('frontoffice/get_category')}}"+'?id='+val,
+            success: function (resp) {
+           resp=JSON.parse(resp);
+                console.log(resp);
+            var string="";
+            $('#pc').html('');
+            string+='<option value="">Select Product Category</option>';
+            for(i=0;i<resp.length;i++)
+            {
+                string+='<option value="'+resp[i].id+'">'+resp[i].name+'</option>';
+            }
+              
+             $('#pc').html(string);
+           }
+            });
+    
+ }
+    // Event listener for file input change
+    /*document.getElementById('imageForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      var files = document.getElementById('media_name').files; // Get the selected files
+      var previewContainer = document.getElementById('previewContainer'); // Container for displaying previews
+
+      // Loop through each file
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        alert(file);
+        var reader = new FileReader();
+
+        // Closure to capture the file information
+        reader.onload = (function (currentFile) {
+          return function (e) {
+            // Create an image element
+            var img = new Image();
+            img.src = e.target.result;
+
+            // Resize the image using canvas
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+
+            // Calculate the desired width and height
+            var maxWidth = 800;
+            var maxHeight = 800;
+            var width = img.width;
+            var height = img.height;
+
+            if (width > height) {
+              if (width > maxWidth) {
+                height *= maxWidth / width;
+                width = maxWidth;
+              }
+            } else {
+              if (height > maxHeight) {
+                width *= maxHeight / height;
+                height = maxHeight;
+              }
+            }
+
+            // Set the canvas dimensions
+            canvas.width = width;
+            canvas.height = height;
+
+            // Draw the image on the canvas
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Get the resized data URL
+            var resizedDataURL = canvas.toDataURL('image/jpeg', 0.7); // Adjust the quality as needed
+
+            // Display the resized image
+            var previewImg = document.createElement('img');
+            previewImg.src = resizedDataURL;
+            previewContainer.appendChild(previewImg);
+
+            // Create a hidden input field to hold the resized image data
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'images[]';
+            input.value = resizedDataURL;
+            document.getElementById('imageForm').appendChild(input);
+          };
+        })(file);
+
+        // Read the file as data URL
+        reader.readAsDataURL(file);
+      }
+
+      // Submit the form
+      document.getElementById('imageForm').submit();
+    }); */
+  
         $(document).ready(function() {
+         ////   alert("call");
+
             $('#simpletable1').DataTable({
                 "lengthMenu": [
                     [10],
@@ -891,6 +1064,8 @@
 
 
             });
+           
+
 
             $('.text').on('keypress', function(e) {
                 var regex = new RegExp("^[a-zA-Z ]*$");
@@ -993,10 +1168,10 @@
             });                
         }
                 if (window.File && window.FileList && window.FileReader) {
-               $("#files_1").on("change", function(e) {
+               $("#media_name").on("change", function(e) {
                   var files = e.target.files,
                      filesLength = files.length;
-                     $("<div class=\"row\"><div class=\"col-md-12\">").insertAfter("#files_1");
+                     $("<div class=\"row\"><div class=\"col-md-12\">").insertAfter("#media_name");
                   for (var i = 0; i < filesLength; i++) {
                      var f = files[i]
                      var fileReader = new FileReader();
@@ -1005,7 +1180,7 @@
                         var file = e.target;
                         $("<div class=\"col-md-2 d-inline-block mr-4\"><span class=\"pip\">" +
                            "<input type=\"button\"  value=\"x\" class=\"remove\" /><img class=\"imageThumb\" style=\"width:120px;\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-                           "<br/>" + "Image" + " " + "-" + count + "<br/></div>").insertAfter("#files_1");
+                           "<br/>" + "Image" + " " + "-" + count + "<br/></div>").insertAfter("#media_name");
                         $(".remove").click(function() {
                            $(this).parent(".pip").remove();
                         });
@@ -1014,7 +1189,7 @@
                      fileReader.readAsDataURL(f);
                   }
 
-                  $("</div></div>").insertAfter("#files_1");
+                  $("</div></div>").insertAfter("#media_name");
                });
             } else {
                alert("Your browser doesn't support to File API")
@@ -1042,7 +1217,7 @@ if($("input[name='fromdate']").val()!='' || $("input[name='cmptype']").val()!=''
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
-        <form method="POST">
+        <form id="imageForm" method="POST">
             @csrf
             <!-- Modal body -->
         <div class="modal-body">

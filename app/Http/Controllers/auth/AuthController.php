@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ForgotPassword;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use App\Models\Contact;
+
+
 use URL;
 use Redirect;
 
@@ -23,6 +26,25 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
            $this->customerr($th);
         }
+    }
+    public function contactform()
+    {
+        return view('contact');
+    }
+    public function complaint(Request $request)
+    {
+       // dd($request);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits:10|numeric',
+            'complaint' => 'required'
+        ]);
+  
+        Contact::create($request->all());
+  
+        return redirect()->back()
+                         ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
     }
     public function handellogin(Request $request){
         try {

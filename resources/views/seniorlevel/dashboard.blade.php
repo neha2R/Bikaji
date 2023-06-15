@@ -65,7 +65,7 @@
                                 <td>{{$item->complaint->customername ?? 'N/A'}}</td>
                                 <td>{{$item->complaint->mobile ?? 'N/A'}}</td>
                                 <th>{{$item->complaint->details ?? 'N/A'}}</th>
-                                <td>{{today()->diffInDays($item->created_at->addDays(7))}}</td>
+                                <td>{{today()->diffInDays($item->created_at->addDays(2))}}</td>
                             {{-- <td><select class="js-example-basic-single col-sm-12 onfff" id="{{$item->id}}" >
                                     <option >Click to Select</option>
                                     @foreach ($departments as $department)

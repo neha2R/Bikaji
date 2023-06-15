@@ -16,7 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 Route::get('/run', function () {
     Artisan::call("cache:clear");
-     Artisan::call("configcache");
+     Artisan::call("config:cache");
+     Artisan::call("ComplaintAutoTransfer:cron");
+
 });
 Route::post('/some', function (Request $request) {
     dd($request);
@@ -27,6 +29,10 @@ Route::post('/some', function (Request $request) {
 
 // Route::redirect('/', '/auth/login', 301);
 Route::view('/', 'welcome');
+Route::get('/complaint', 'auth\AuthController@contactform')->name('complaint');
+
+Route::post('/complaint', 'auth\AuthController@complaint')->name('complaint');
+
 Route::group(['prefix' => 'auth', 'namespace' => 'auth'], function () {
     Route::get('/login', 'AuthController@login')->name('login');
     Route::post('/login', 'AuthController@handellogin')->name('adminhandellogin');
@@ -99,6 +105,10 @@ Route::group(['prefix' => 'frontoffice', 'namespace' => 'frontoffice', 'middlewa
     Route::get('/dashboard', 'DashboardController@index')->name('frontofficedashboard');
     Route::post('/dashboard', 'DashboardController@addcustomercomplaint');
 
+
+    
+    Route::get('/get_category', 'DashboardController@get_category');
+
     Route::post('/editcomplaint/{id}', 'DashboardController@editcomplaint')->name('editcomplaint');
     Route::get('/editcomplaint/{id}', 'DashboardController@showcomplaint')->name('editcomplaint');
     Route::post('/createcomplaint', 'DashboardController@createcomplaint')->name('createcomplaint');
@@ -170,6 +180,13 @@ Route::post('/trackinquiry', 'TrackingController@trackinquiry');
 // customer complaint form
 Route::get('/customercomplaintform', 'CustomerComplaintController@customercomplaintform');
 Route::post('/customercomplaintform', 'CustomerComplaintController@registercustomercomplaint');
+
+
+//Route::get('/customercomplaintform', 'CustomerComplaintController@customercomplaintform');
+//Route::post('/customercomplaintform', 'CustomerComplaintController@registercustomercomplaint');
+Route::get('/feedback', 'CustomerComplaintController@getfeedback');
+
+Route::post('/feedback', 'CustomerComplaintController@feedback');
 
 // customer inquiry form
 Route::get('/customerinquiryform', 'CustomerComplaintController@customerinquiryform');

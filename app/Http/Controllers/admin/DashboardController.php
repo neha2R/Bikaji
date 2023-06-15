@@ -55,6 +55,7 @@ class DashboardController extends Controller
 
             })->with('complaint')->orderBy('id', 'DESC')->get()->unique('complaintid')->count();
 
+            
             $compalintstats = json_encode([$highprioritycomplaint, $activecomplaint, $resolvedcomplaint, $crossedtlcomplaint]);
 
             $compalintstatsdata = json_encode(['High Priority' => $highprioritycomplaint, 'Active Complaint' => $activecomplaint, 'Resolved Complaint' => $resolvedcomplaint, 'Crossed Timeline' => $crossedtlcomplaint]);

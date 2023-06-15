@@ -15,6 +15,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Jobs\NewComplaintNotifications;
+use App\Models\Department;
+use App\Models\Contact;
+use App\Models\ComplaintAttachment;
 
 class CustomerComplaintController extends Controller
 {
@@ -22,12 +25,38 @@ class CustomerComplaintController extends Controller
     public function customercomplaintform()
     {
         try {
-            return view('customercomplaint.customercomplaintform');
+            $deparments = Department::has('users')->orderBy('id', 'desc')->get();
+
+            return view('customercomplaint.customercomplaintform' , ['deparments' => $deparments]);
         } catch (\Throwable $th) {
             $this->customerr($th);
         }
     }
+    public function getfeedback()
+    {
+        try {
+          //  $deparments = Department::has('users')->orderBy('id', 'desc')->get();
 
+            return view('contact');
+        } catch (\Throwable $th) {
+            $this->customerr($th);
+        }
+    }
+    public function feedback(Request $request)
+    {
+       // dd($request);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits:10|numeric',
+            'complaint' => 'required'
+        ]);
+  
+        Contact::create($request->all());
+  
+        return redirect()->back()
+                         ->with(['success' => 'Thank you for your feedback.']);
+    }
     public function registercustomercomplaint(Request $request)
     {
         // dd($request);
@@ -62,15 +91,71 @@ class CustomerComplaintController extends Controller
             $data['title'] = $request->title;
             $data['email'] = $request->email;
             $data['pin'] = $request->pin;
+            $data['complainttype'] = $request->ct;
+
             $data['address'] = $request->address;
             $data['complaintsource'] = '6';
-            if ($request->has('file')) {
+            $create = Complaint::create($data);
+
+           
+
+           /* if ($request->has('file')) {
                 $foldername = 'complaintimage';
                 $image = $request->file('file')->store($foldername, 'public');
                 $data['image'] = $image;
-            }
-            $create = Complaint::create($data);
+            } */
+            if ($request->hasfile('myFile')) {
+                foreach ($request->file('myFile') as $key => $file) {
+                    list($width, $height) = getimagesize($file);
+                   if($file->getMimeType()=='image/png') 
+                   {
+                    $myImage = imagecreatefrompng(realpath($file));
+                   }
+                   else
+                   {
+                    $myImage = imagecreatefromjpeg(realpath($file));
 
+
+                   }
+                   /* if ($width > $height) {
+                        $y = 0;
+                        $x = ($width - $height) / 2;
+                        $smallestSide = $height;
+                      } else {
+                        $x = 0;
+                        $y = ($height - $width) / 2;
+                        $smallestSide = $width;
+                      }*/
+                      
+                      // copying the part into thumbnail
+                      $thumbwidth = $width;
+                      $thumbheight = $height;
+
+                      $thumb = imagecreatetruecolor($thumbwidth, $thumbheight);
+                      imagecopyresampled($thumb, $myImage, 0, 0, 0, 0, $thumbwidth, $thumbheight, $width, $height);
+                 
+                      header('Content-type: image/png');
+       
+                      $initfilename = uniqid() . ".png";
+                $imagename= public_path("/storage/complaintimage/" . $initfilename);
+               //////// $data['image'] = "complaintimage/".$initfilename;
+               if($file->getMimeType()=='image/png') 
+               {
+                imagepng($thumb,$imagename);
+               }
+               else
+               {
+                imagejpeg($thumb,$imagename);
+
+               }
+            $attachment = new ComplaintAttachment;
+            $attachment->complaint_id = $create->id;
+            $attachment->media_name = "complaintimage/".$initfilename;
+            $attachment->media_type = '0';
+            // dd($attachment);
+            $attachment->save();
+                }
+            }
             CustomerComplaintFormNotification::dispatchNow($data['uuid'], $request->name, $request->details, $request->mobile, $request->title, $request->email);
             $hremail = User::where('role','1')->first();
             NewComplaintNotifications::dispatchNow($data['uuid'],$request->name,$request->details,$hremail->mobile,$request->title,$hremail->email);

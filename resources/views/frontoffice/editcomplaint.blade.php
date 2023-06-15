@@ -171,9 +171,25 @@
 
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Product Name</label>
+ 
                                     <div class="col-sm-10">
+                                        @if(!empty($comp->product_nameid))
+                                        <select id="product_name" name="product_name" onchange="getcategory(this.value)" class="form-control">
+                                            @foreach ($product as $item)
+                                            @if($item->id == $comp->product_nameid)
+                                           @php $selected2 = 'selected="se;ected"'; @endphp
+                                           @else
+                                           @php $selected2 = ''; @endphp
+                                           @endif
+                                            <option {{$selected2}} value="{{$item->id}}">{{ucwords($item->name ?? 'N/A')}}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
                                         <input type="text" class="form-control text" value="{{$comp->product_name}}" name="product_name" placeholder="Product Name" maxlength="50">
+
+                                        @endif
                                     </div>
+                                 
                                 </div>
                            <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Product Category</label>
@@ -348,4 +364,29 @@ if (validateMobNum.test(mobileNum ) && mobileNum.length == 10) {
 
       });
 </script>
+<script>
+ ///   alert("call");
+    function getcategory(val)
+ {
+   // console.log("call");
+   // alert(val);
+    $.ajax({
+            type: 'GET',
+            url: "{{url('frontoffice/get_category')}}"+'?id='+val,
+            success: function (resp) {
+           resp=JSON.parse(resp);
+                console.log(resp);
+            var string="";
+            $('#pc').html('');
+            string+='<option value="">Select Product Category</option>';
+            for(i=0;i<resp.length;i++)
+            {
+                string+='<option value="'+resp[i].id+'">'+resp[i].name+'</option>';
+            }
+              
+             $('#pc').html(string);
+           }
+            });
+    
+ }
 @endsection

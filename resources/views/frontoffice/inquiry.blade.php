@@ -1,5 +1,24 @@
 @extends('frontoffice.layout.app')
 @section('content')
+<style>
+.feather {
+    font-family: 'feather' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 22px;
+    -moz-osx-font-smoothing: grayscale;
+}
+table.table-bordered.dataTable tbody th {
+    white-space: normal !important;
+    /* display: inline-block; */
+    max-width: 220px;
+}
+    </style>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -7,6 +26,10 @@
         <div class="col-md-12">
             <div class="card"  id="section1">
                 <div class="card-header">
+                <div style="float:right">
+            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a> </div>
                     <h3>Inquiry Listing</h3>
                     
                     {{-- <span>DataTables has most features enabled by default, so all you need to do to use it with your own ables is to call the construction function: $().DataTable();.</span> --}}

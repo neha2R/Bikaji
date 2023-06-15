@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class Category extends Model
+class Product extends Model
 {
-    protected $fillable = ['name','productid','is_active'];
+    protected $fillable = ['name','is_active'];
 
    // public function users(){
    //     return $this->hasMany(User::class,'department','id');

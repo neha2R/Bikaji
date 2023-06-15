@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        Commands\ComplaintAutoTransfer::class,
+
         //
     ];
 
@@ -40,6 +42,7 @@ class Kernel extends ConsoleKernel
 
         // $schedule->job(new SendReportJob)->weekly()->mondays()->at('13:00');
          $schedule->job(new SendReportJob)->dailyAt('13:00');	
+         $schedule->command('ComplaintAutoTransfer:cron --force')->dailyAt('00:00');	
 
     }
 
